@@ -17,10 +17,6 @@
     "power_meter_sensor": "str",
     "charging_current_sensor": "str",
     "maximum_charging_current": "str"
-  },
-  "image": "local/evcc_alternative",
-  "ports": {
-    "8000/tcp": 8000
+
   }
 }
-
