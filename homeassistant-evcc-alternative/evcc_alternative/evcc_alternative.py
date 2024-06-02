@@ -1,6 +1,9 @@
 import requests
 import time
 import json
+from flask import Flask, jsonify, request
+
+app = Flask(__name__)
 
 # Citim opțiunile
 with open('/data/options.json') as f:
@@ -63,5 +66,19 @@ def manage_charging():
 
         time.sleep(60)
 
+@app.route('/')
+def index():
+    return jsonify({"message": "EVCC Alternative Add-on is running"})
+
+@app.route('/status')
+def status():
+    return jsonify({
+        "inverter_power": get_sensor_state(inverter_power_sensor),
+        "power_consumption": get_sensor_state(power_meter_sensor),
+        "charging_current": get_sensor_state(charging_current_sensor)
+    })
+
 if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=5000)
     manage_charging()
+
