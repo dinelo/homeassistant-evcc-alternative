@@ -1,6 +1,8 @@
-FROM homeassistant/amd64-base-python:3.9
+FROM python:3.9-slim
 
-COPY data /data
-RUN chmod a+x /data/run.sh
+COPY run.sh /run.sh
+COPY evcc_alternative.py /evcc_alternative.py
+RUN chmod a+x /run.sh
 
-CMD [ "/data/run.sh" ]
+CMD [ "/run.sh" ]
+
