@@ -1,0 +1,26 @@
+{
+  "name": "EVCC Alternative",
+  "version": "1.0",
+  "slug": "evcc_alternative",
+  "description": "An add-on for managing EV charging like EVCC",
+  "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
+  "startup": "services",
+  "boot": "auto",
+  "options": {
+    "inverter_power_sensor": "sensor.inverter_active_power",
+    "power_meter_sensor": "sensor.power_meter_active_power",
+    "charging_current_sensor": "sensor.smartmeter_esp8266_current",
+    "maximum_charging_current": "number.wallbox_copper_business_sn_378969_maximum_charging_current"
+  },
+  "schema": {
+    "inverter_power_sensor": "str",
+    "power_meter_sensor": "str",
+    "charging_current_sensor": "str",
+    "maximum_charging_current": "str"
+  },
+  "image": "local/evcc_alternative",
+  "ports": {
+    "8000/tcp": 8000
+  }
+}
+
